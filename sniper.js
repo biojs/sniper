@@ -22,18 +22,22 @@ var Sniper = module.exports = function(opts){
     return snipsFiltered;
   };
 
-  // parses and add a special config for each snippet
-  this.addToml = function(name,parsedD){
-    var parsedConfig = toml.parse(fs.readFileSync(name, 'utf8'));
-    // merge stuff
-    if( parsedConfig["js"] !== undefined){
-      parsedConfig["js"].forEach(function(entry){
+  this.mergeStuff = function(origin,remote){
+  if( remote  !== undefined){
+      remote.forEach(function(entry){
         // no duplicates
-        if(parsedD.js.indexOf(entry) < 0){
-          parsedD.js.push(entry);
+        if(origin.indexOf(entry) < 0){
+          origin.push(entry);
         }
       });
     }
+  }
+
+  // parses and add a special config for each snippet
+  this.addToml = function(name,parsedD){
+    var parsedConfig = toml.parse(fs.readFileSync(name, 'utf8'));
+    this.mergeStuff(parsedD.js,parsedConfig.js);
+    this.mergeStuff(parsedD.css,parsedConfig.css);
   };
 
   // displays the script tags

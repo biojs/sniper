@@ -1,4 +1,6 @@
 {% for snip in snips %}
-<h2> {{ snip.name }}</h2>
+<a href="/{{ baseHref }}/{{snip.name}}">
+	<h2> {{ snip.name }}</h2>
+</a>
 {{ snip.content | raw }}
 {% endfor %}

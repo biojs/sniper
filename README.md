@@ -28,8 +28,8 @@ How to use
 ### 1. create a `sniper.toml` in your main folder
 
 ```
-snippetJS = [ "node_modules/jquery/dist/jquery.min.js", "https://drone.io/github.com/greenify/biojs-vis-msa/files/build/biojs_vis_msa.js" ]
-snippetCSS = ["/css/msa.css"]
+js = [ "node_modules/jquery/dist/jquery.min.js", "https://drone.io/github.com/greenify/biojs-vis-msa/files/build/biojs_vis_msa.js" ]
+css = ["/css/msa.css"]
 ```
 
 specify all global dependencies like jQuery or your component.
@@ -71,7 +71,7 @@ There are there modes:
 
 The files are refreshed on every reload.
 
-### 4. If you need to add extra js-Files for a snippet
+### 4. If you need to add extra js-Files (or css) for a snippet
 
 ... just create the ```same_filename.toml`.
 
@@ -79,7 +79,7 @@ The files are refreshed on every reload.
 js = ["/node_modules/biojs-model/biojs.model.min.js"]
 ```
 
-How does it work
+How does it work?
 ----------
 
 * normal file server

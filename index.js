@@ -54,7 +54,8 @@ var Server = module.exports = function(opts){
     var parsed = getParsed();
     snips.forEach(function(snip){
       snipStr.push({ content: sniper.buildSnippet(snip,parsed),
-        name: snip});
+        name: snip,
+        baseHref: "snippets"});
     });
     this.res.write(sniper.renderHead(snipTemplate,parsed));
     var template = swig.compileFile(allTemplate);

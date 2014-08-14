@@ -17,9 +17,10 @@ var Server = module.exports = function(opts){
   var dirname = opts.dirname || __dirname;
   var snippetFolder = join(dirname,opts.snippets);
 
-  var snipTemplate = join(opts.templateDir, "template.html");
-  var listTemplate = join(opts.templateDir, "list.html");
-  var allTemplate = join(opts.templateDir, "all.html");
+  var templateDir = join(__dirname, "templates");
+  var snipTemplate = join(templateDir, "template.html");
+  var listTemplate = join(templateDir, "list.html");
+  var allTemplate = join(templateDir, "all.html");
 
   var parsed = toml.parse(fs.readFileSync(join(dirname,opts.toml), 'utf8'));
   var sniper = new Sniper({snippetFolder: snippetFolder});

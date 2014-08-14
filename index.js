@@ -56,7 +56,7 @@ var Server = module.exports = function(opts){
     this.res.end(template({snips: snipStr, baseHref: "snippets"}));
   });
 
-  router.get("/snippets/list", function (name) {
+  router.get("/snippets/", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var template = swig.compileFile(listTemplate);
     this.res.end(template({snips: sniper.getSnippets(), baseHref: "snippets"}));

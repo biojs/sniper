@@ -54,7 +54,7 @@ var Sniper = module.exports = function(opts){
 
     if (fs.existsSync(jsFile)) {
       var htmlFile = join(self.opts.snippetFolder,name+".html");
-      var htmlExists = fs.existsSync(path);
+      var htmlExists = fs.existsSync(htmlFile);
       if (htmlExists) {
         buffer += fs.readFileSync(htmlFile);
       } else{

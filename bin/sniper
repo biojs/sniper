@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var path = require('path');
+var fs = require('fs');
+var join = path.join;
+var basename = path.basename;
+var cwd = process.cwd();
+var Server = require("../index.js");
+
+/*
+program
+  .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
+  .usage('[debug] [options] [files]')
+  .option('-r, --require <name>', 'require the given module')
+  .parse(process.argv);
+
+program.on('reporters', function(){
+	console.log("hi");
+});
+*/
+
+// default settings
+var options = {
+	dirname: "../biojs-vis-msa/",
+	toml: "sniper.toml",
+	templateDir: "templates",
+	snippets: "snippets"
+}
+
+if(process.argv.length == 2){
+	options.dirname = cwd;
+} else {
+	// first argument
+	options.dirname = process.argv[2];	
+}
+
+options.dirname = path.normalize(options.dirname);
+console.log("DIR:" + options.dirname);
+
+var server = Server(options);

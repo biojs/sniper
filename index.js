@@ -22,7 +22,6 @@ var Server = module.exports = function(opts){
   var listTemplate = join(templateDir, "list.html");
   var allTemplate = join(templateDir, "all.html");
 
-  var parsed = toml.parse(fs.readFileSync(join(dirname,opts.toml), 'utf8'));
   var sniper = new Sniper({snippetFolder: snippetFolder});
 
   var options = {
@@ -40,6 +39,11 @@ var Server = module.exports = function(opts){
     ]
   };
 
+  var getParsed = function(){
+    var filename = join(dirname,opts.toml);
+    var parsed = toml.parse(fs.readFileSync(filename, 'utf8'));
+    return parsed;
+  }
 
   this.server = union.createServer(options);
 
@@ -47,21 +51,21 @@ var Server = module.exports = function(opts){
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var snips = sniper.getSnippets();
     var snipStr = [];
-    var parsedD = deepcopy(parsed);
+    var parsed = getParsed();
     snips.forEach(function(snip){
-      snipStr.push({ content: sniper.buildSnippet(snip,parsedD),
+      snipStr.push({ content: sniper.buildSnippet(snip,parsed),
         name: snip});
     });
-    this.res.write(sniper.renderHead(snipTemplate,parsedD));
+    this.res.write(sniper.renderHead(snipTemplate,parsed));
     var template = swig.compileFile(allTemplate);
     this.res.end(template({snips: snipStr, baseHref: "snippets"}));
   });
 
   router.get("/snippets/:name", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
-    var parsedD = deepcopy(parsed);
-    var buffer = sniper.buildSnippet(name,parsedD); 
-    this.res.write(sniper.renderHead(snipTemplate,parsedD));
+    var parsed = getParsed();
+    var buffer = sniper.buildSnippet(name,parsed); 
+    this.res.write(sniper.renderHead(snipTemplate,parsed));
     this.res.end(buffer);
   });
 

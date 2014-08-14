@@ -28,7 +28,10 @@ var Sniper = module.exports = function(opts){
     // merge stuff
     if( parsedConfig["js"] !== undefined){
       parsedConfig["js"].forEach(function(entry){
-        parsedD.snippetJS.push(entry);
+        // no duplicates
+        if(parsedD.js.indexOf(entry) < 0){
+          parsedD.js.push(entry);
+        }
       });
     }
   };
@@ -36,8 +39,8 @@ var Sniper = module.exports = function(opts){
   // displays the script tags
   this.renderHead = function(snipTemplate,parsedD){
     var template = swig.compileFile(snipTemplate);
-    var head = template({ css: parsedD.snippetCSS,
-      scripts: parsedD.snippetJS});
+    var head = template({ css: parsedD.css,
+      scripts: parsedD.js});
     return head;
   };
 

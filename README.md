@@ -79,6 +79,17 @@ The files are refreshed on every reload.
 js = ["/node_modules/biojs-model/biojs.model.min.js"]
 ```
 
+How does it work
+----------
+
+* normal file server
+* if you go into one of the special snippet folders, the general `sniper.toml` specifies which js and css needs to be there for every snippet.
+* a snippet can either work with `yourDiv` (a predefined variable pointing to a div container) or define a custom, minimal `.html`
+* also every snippet can define custom settings, like extra js 
+
+An example can be found at [biojs-vis-msa](https://github.com/greenify/biojs-vis-msa/tree/master/snippets).
+
+
 Specification and more info
 ---------------------------
 

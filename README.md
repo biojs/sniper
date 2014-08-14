@@ -1,20 +1,20 @@
 biojs-sniper
 -------------
 
-                          .-----------------TTTT_-----_______
-                        /''''''''''(______O] ----------____  \______/]_
-     __...---'"""\_ --''   Q                               ___________@
- |'''                   ._   _______________=---------"""""""
- |                ..--''|   l L |_l   |
- |          ..--''      .  /-___j '   '
- |    ..--''           /  ,       '   '
- |--''                /           `    \
-                      L__'         \    -
-                                    -    '-.
-                                     '.    /
+                                      ____    _     __     _    ____
+                                     |####`--|#|---|##|---|#|--'##|#|
+   _                                 |____,--|#|---|##|---|#|--.__|_|
+ _|#)_____________________________________,--'EEEEEEEEEEEEEE'_=-.
+((_____((_________________________,--------[JW](___(____(____(_==)        _________
+                               .--|##,----o  o  o  o  o  o  o__|/`---,-,-'=========`=+==.
+                               |##|_Y__,__.-._,__,  __,-.___/ J \ .----.#############|##|
+                               |##|              `-.|#|##|#|`===l##\   _\############|##|
+                              =======-===l          |_|__|_|     \##`-"__,=======.###|##|
+                                                                  \__,"          '======'
+
 
 ```
-npm install biojs-sniper
+npm install -g biojs-sniper
 ```
 
 CLI Server for Snippets.
@@ -42,7 +42,33 @@ var msa = new biojs.vis.msa.msa(yourDiv);
 You can safely assume that `yourDiv` is your main div.
 If you dislike the wrapping, create your own `<same-filename>.html` file.
 
-### 3. If you need to add extra js-Files for a snippet
+### 3. Run the server
+
+```
+biojs-sniper <your-dir>
+```
+
+If <your-dir> is `.`, you don't need to have this argument.
+
+Now you can open `localhost:9090`.
+
+There are there modes:
+
+1) Overview mode/list
+
+> [localhost:9090/snippets](http://localhost:9090/snippets)
+
+2) List all
+
+> [localhost:9090/snippets/all](http://localhost:9090/snippets/all)
+
+3) List one/detail view
+
+> [localhost:9090/snippets/your_snippet](http://localhost:9090/snippets/your_snippet])
+
+The files are refreshed on every reload.
+
+### 4. If you need to add extra js-Files for a snippet
 
 ... just create the ```same_filename.toml`.
 

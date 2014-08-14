@@ -57,12 +57,6 @@ var Server = module.exports = function(opts){
     this.res.end(template({snips: snipStr, baseHref: "snippets"}));
   });
 
-  router.get("/snippets/", function (name) {
-    this.res.writeHead(200, { 'Content-Type': 'text/html' });
-    var template = swig.compileFile(listTemplate);
-    this.res.end(template({snips: sniper.getSnippets(), baseHref: "snippets"}));
-  });
-
   router.get("/snippets/:name", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var parsedD = deepcopy(parsed);
@@ -71,5 +65,10 @@ var Server = module.exports = function(opts){
     this.res.end(buffer);
   });
 
+  router.get(/snippets(\/)?/, function (name) {
+    this.res.writeHead(200, { 'Content-Type': 'text/html' });
+    var template = swig.compileFile(listTemplate);
+    this.res.end(template({snips: sniper.getSnippets(), baseHref: "snippets"}));
+  });
   this.server.listen(9090);
 };

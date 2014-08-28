@@ -90,7 +90,11 @@ How does it work?
 An example can be found at [biojs-vis-msa](https://github.com/greenify/biojs-vis-msa/tree/master/snippets).
 
 
-Specification and more info
+Why snippets?
 ---------------------------
 
-See the [biojs2 wiki](https://github.com/biojs/biojs2/wiki/Snippets).
+A future version of the BioJS might 
+
+* recognize visualization toml file in the folder
+* render/display all snippets in the registry
+* links to plunkr (next step)

@@ -93,6 +93,8 @@ An example can be found at [biojs-vis-msa](https://github.com/greenify/biojs-vis
 Why snippets?
 ---------------------------
 
+Reason: visually appealing example files like in [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) or [MSA](http://dev.biojs-msa.org/v1/msa_non_amd.html)
+
 A future version of the BioJS might 
 
 * recognize visualization toml file in the folder

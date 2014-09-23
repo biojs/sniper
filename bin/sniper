@@ -22,8 +22,8 @@ program.on('reporters', function(){
 
 // default settings
 var options = {
-	dirname: "../biojs-vis-msa/",
-	toml: "sniper.toml",
+	dirname: ".",
+	config: "package.json",
 	templateDir: "templates",
 	snippets: "snippets"
 }

@@ -15,13 +15,23 @@ var Sniper = require('./sniper');
 var Server = module.exports = function(opts){
 
   var dirname = opts.dirname || __dirname;
-  var snippetFolder = join(dirname,opts.snippets);
 
   var templateDir = join(__dirname, "templates");
   var snipTemplate = join(templateDir, "template.html");
   var listTemplate = join(templateDir, "list.html");
   var allTemplate = join(templateDir, "all.html");
 
+  var getParsed = function(){
+    var filename = join(dirname,opts.config);
+    var parsed = JSON.parse(fs.readFileSync(filename, 'utf8')).sniper;
+
+    this.snippetFolder = join(dirname,opts.snippets);
+    console.log("parsed", parsed);
+    return parsed;
+  }
+
+
+  getParsed();
   var sniper = new Sniper({snippetFolder: snippetFolder});
 
   var options = {
@@ -38,12 +48,6 @@ var Server = module.exports = function(opts){
       })
     ]
   };
-
-  var getParsed = function(){
-    var filename = join(dirname,opts.toml);
-    var parsed = toml.parse(fs.readFileSync(filename, 'utf8'));
-    return parsed;
-  }
 
   this.server = union.createServer(options);
 

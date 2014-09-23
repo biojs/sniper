@@ -34,8 +34,9 @@ var Sniper = module.exports = function(opts){
   }
 
   // parses and add a special config for each snippet
-  this.addToml = function(name,parsedD){
-    var parsedConfig = toml.parse(fs.readFileSync(name, 'utf8'));
+  this.addJSON = function(name,parsedD){
+    //var parsedConfig = toml.parse(fs.readFileSync(name, 'utf8'));
+    var parsedConfig = JSON.parse(fs.readFileSync(name, 'utf8'));
     this.mergeStuff(parsedD.js,parsedConfig.js);
     this.mergeStuff(parsedD.css,parsedConfig.css);
   };
@@ -51,12 +52,12 @@ var Sniper = module.exports = function(opts){
   // builds the snippet html
   this.buildSnippet = function(name,parsedD){
     var jsFile = join(self.opts.snippetFolder,name+".js");
-    var tomlFile = join(self.opts.snippetFolder,name+".toml");
+    var tomlFile = join(self.opts.snippetFolder,name+".json");
 
     var buffer = "";
 
     if (fs.existsSync(tomlFile)) {
-      this.addToml(tomlFile, parsedD);
+      this.addJSON(tomlFile, parsedD);
     }
 
     if (fs.existsSync(jsFile)) {

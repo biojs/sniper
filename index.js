@@ -8,8 +8,6 @@ var path = require('path');
 var join = path.join;
 var deepcopy = require('deepcopy');
 
-// TOML
-var toml = require('toml');
 var Sniper = require('./sniper');
 
 var Server = module.exports = function(opts){
@@ -27,6 +25,9 @@ var Server = module.exports = function(opts){
 
     this.snippetFolder = join(dirname,opts.snippets);
     console.log("parsed", parsed);
+    if(parsed == undefined){
+      throw("please define a sniper section in your package.json");
+    }
     return parsed;
   }
 

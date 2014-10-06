@@ -52,7 +52,7 @@ Create `js` files in the `snippets` folder.
 var msa = new biojs.vis.msa.msa(yourDiv);
 ```
 
-You can safely assume that `yourDiv` is your main div.
+You can safely assume that `yourDiv` is your main div. Use `yourDiv.id` if your component expects an id.
 If you dislike the wrapping, create your own `<same-filename>.html` file.
 
 ### 3. Run the server
@@ -89,6 +89,26 @@ The files are refreshed on every reload.
 {js: ["/node_modules/biojs-model/biojs.model.min.js"]}
 ```
 
+FAQ?
+-----
+
+#### How can I request relative data?
+
+If you want to download data via XHR you might normally write `data/data.json` - make it __relative__ by appending `./`.
+So you would have `./data/data.json`
+
+#### How can I transmit my events to the registry
+
+add this line somewhere after you created your application instance in the snippet.
+E.g. if you make an XHR request it has to be in the callback.
+
+```
+//instance=<variable name of your component>
+```
+
+(this is - under the hood - replaced with `instance.onAll` and then sends messages to the parent frame).
+
+
 How does it work?
 ----------
 
@@ -99,14 +119,7 @@ How does it work?
 
 An example can be found at [biojs-vis-msa](https://github.com/greenify/biojs-vis-msa/tree/master/snippets).
 
-
 Why snippets?
 ---------------------------
 
-Reason: visually appealing example files like in [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) or [MSA](http://dev.biojs-msa.org/v1/msa_non_amd.html)
-
-A future version of the BioJS might 
-
-* recognize visualization toml file in the folder
-* render/display all snippets in the registry
-* links to plunkr (next step)
+Reason: visually appealing example files in the [registry](http://registry.biojs.net/client/#/detail/biojs-vis-msa) (inspired by [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) )

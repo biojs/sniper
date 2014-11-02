@@ -68,7 +68,7 @@ var Sniper = module.exports = function(opts){
       } else{
         // insert auto div
         var divName = Math.random().toString(36).substring(7);
-        buffer += "<div id='"+divName+"'>Error happened.</div>";
+        buffer += "<div id='"+divName+"'></div>";
       }
       buffer += ("<script>");
       if( !htmlExists){

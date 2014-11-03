@@ -1,6 +1,6 @@
 {
 	"name": "biojs-sniper",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Renders snippets on demand",
 	"main": "index.js",
 	"bin" : { 
@@ -11,7 +11,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/greenify/biojs-sniper"
+		"url": "https://github.com/biojs/biojs-sniper"
 	},
 	"keywords": [
 		"biojs",
@@ -21,9 +21,9 @@
 	"author": "greenify",
 	"license": "Apache 2",
 	"bugs": {
-		"url": "https://github.com/greenify/biojs-sniper/issues"
+		"url": "https://github.com/biojs/biojs-sniper/issues"
 	},
-	"homepage": "https://github.com/greenify/biojs-sniper",
+	"homepage": "https://github.com/biojs/biojs-sniper",
 	"dependencies": {
 		"commander": "^2.3.0",
 		"concat-stream": "^1.4.6",

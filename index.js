@@ -13,13 +13,18 @@ var Sniper = require('./sniper');
 var Server = module.exports = function(opts){
 
   var dirname = opts.dirname || __dirname;
+  var self = this;
+  this.port = opts.port || 9090;
 
+  // all templates
   var templateDir = join(__dirname, "templates");
   var snipTemplate = join(templateDir, "template.html");
   var listTemplate = join(templateDir, "list.html");
   var allTemplate = join(templateDir, "all.html");
 
-  var getParsed = function(){
+
+  // loads the config
+  var readConfig = function(){
     var filename = join(dirname,opts.config);
     var parsed = JSON.parse(fs.readFileSync(filename, 'utf8')).sniper;
 
@@ -31,8 +36,8 @@ var Server = module.exports = function(opts){
     return parsed;
   }
 
-
-  getParsed();
+  // init the server
+  readConfig();
   var sniper = new Sniper({snippetFolder: snippetFolder});
 
   var options = {
@@ -51,12 +56,29 @@ var Server = module.exports = function(opts){
   };
 
   this.server = union.createServer(options);
+  
+  // detail view
+  router.get("/snippets/:name", function (name) {
+    this.res.writeHead(200, { 'Content-Type': 'text/html' });
+    var parsed = readConfig();
+    var buffer = sniper.buildSnippet(name,parsed); 
+    this.res.write(sniper.renderHead(snipTemplate,parsed));
+    this.res.end(buffer);
+  });
 
+  // overview listing
+  router.get(/snippets(\/)?/, function (name) {
+    this.res.writeHead(200, { 'Content-Type': 'text/html' });
+    var template = swig.compileFile(listTemplate);
+    this.res.end(template({snips: sniper.getSnippets(), baseHref: "snippets"}));
+  });
+
+  // display all snippets in one page
   router.get("/snippets/all", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var snips = sniper.getSnippets();
     var snipStr = [];
-    var parsed = getParsed();
+    var parsed = readConfig();
     snips.forEach(function(snip){
       snipStr.push({ content: sniper.buildSnippet(snip,parsed),
         name: snip,
@@ -67,18 +89,5 @@ var Server = module.exports = function(opts){
     this.res.end(template({snips: snipStr, baseHref: "snippets"}));
   });
 
-  router.get("/snippets/:name", function (name) {
-    this.res.writeHead(200, { 'Content-Type': 'text/html' });
-    var parsed = getParsed();
-    var buffer = sniper.buildSnippet(name,parsed); 
-    this.res.write(sniper.renderHead(snipTemplate,parsed));
-    this.res.end(buffer);
-  });
-
-  router.get(/snippets(\/)?/, function (name) {
-    this.res.writeHead(200, { 'Content-Type': 'text/html' });
-    var template = swig.compileFile(listTemplate);
-    this.res.end(template({snips: sniper.getSnippets(), baseHref: "snippets"}));
-  });
-  this.server.listen(9090);
+  this.server.listen(this.port);
 };

@@ -22,8 +22,10 @@ var Sniper = module.exports = function(opts){
     return snipsFiltered;
   };
 
+  // merges non-duplicate entries of an array (remote) 
+  // into a array (origin)
   this.mergeStuff = function(origin,remote){
-  if( remote  !== undefined){
+  if( remote  !== undefined && origin !== undefined){
       remote.forEach(function(entry){
         // no duplicates
         if(origin.indexOf(entry) < 0){
@@ -35,7 +37,6 @@ var Sniper = module.exports = function(opts){
 
   // parses and add a special config for each snippet
   this.addJSON = function(name,parsedD){
-    //var parsedConfig = toml.parse(fs.readFileSync(name, 'utf8'));
     var parsedConfig = JSON.parse(fs.readFileSync(name, 'utf8'));
     this.mergeStuff(parsedD.js,parsedConfig.js);
     this.mergeStuff(parsedD.css,parsedConfig.css);
@@ -50,6 +51,8 @@ var Sniper = module.exports = function(opts){
   };
 
   // builds the snippet html
+  // - reads the js & html (same name)
+  // - searches for a extra config file (same name.json)
   this.buildSnippet = function(name,parsedD){
     var jsFile = join(self.opts.snippetFolder,name+".js");
     var tomlFile = join(self.opts.snippetFolder,name+".json");
@@ -57,6 +60,7 @@ var Sniper = module.exports = function(opts){
     var buffer = "";
 
     if (fs.existsSync(tomlFile)) {
+      console.log("found extra config:", tomlFile);
       this.addJSON(tomlFile, parsedD);
     }
 

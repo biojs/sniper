@@ -7,6 +7,7 @@ var router = new director.http.Router();
 var path = require('path');
 var join = path.join;
 var deepcopy = require('deepcopy');
+var favicon = require('serve-favicon');
 
 var Sniper = require('./sniper');
 
@@ -26,8 +27,13 @@ var Server = module.exports = function(opts){
   // loads the config
   var readConfig = function(){
     var filename = join(dirname,opts.config);
-    var parsed = JSON.parse(fs.readFileSync(filename, 'utf8')).sniper;
 
+    try{
+      var parsed = JSON.parse(fs.readFileSync(filename, 'utf8')).sniper;
+    }catch(err){
+      console.log('Invalid package.json');
+      return;
+    }
     this.snippetFolder = join(dirname,opts.snippets);
     console.log("parsed", parsed);
     if(parsed == undefined){
@@ -37,11 +43,20 @@ var Server = module.exports = function(opts){
   }
 
   // init the server
-  readConfig();
+  if(readConfig() == undefined){
+    process.exit(1);
+  }
   var sniper = new Sniper({snippetFolder: snippetFolder});
 
+  var errorHandler = function (err, req, res) {
+    res.statusCode = err.status;
+    res.end(req.headers);
+  };
+
   var options = {
+    onError: errorHandler,
     before: [
+      favicon(__dirname + '/favicon.ico'),
       function (req, res) {
         var found = router.dispatch(req, res);
         if (!found) {
@@ -60,7 +75,12 @@ var Server = module.exports = function(opts){
   // detail view
   router.get("/snippets/:name", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
-    var parsed = readConfig();
+    try{
+      var parsed = readConfig();
+    }catch(err){
+      this.res.status(400).send('Invalid package.json');
+      return;
+    }
     var buffer = sniper.buildSnippet(name,parsed); 
     this.res.write(sniper.renderHead(snipTemplate,parsed));
     this.res.end(buffer);
@@ -78,7 +98,12 @@ var Server = module.exports = function(opts){
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var snips = sniper.getSnippets();
     var snipStr = [];
-    var parsed = readConfig();
+    try{
+      var parsed = readConfig();
+    }catch(err){
+      this.res.status(400).send('Invalid package.json');
+      return;
+    }
     snips.forEach(function(snip){
       snipStr.push({ content: sniper.buildSnippet(snip,parsed),
         name: snip,
@@ -87,6 +112,16 @@ var Server = module.exports = function(opts){
     this.res.write(sniper.renderHead(snipTemplate,parsed));
     var template = swig.compileFile(allTemplate);
     this.res.end(template({snips: snipStr, baseHref: "snippets"}));
+  });
+
+  this.server.on("error",function(err){
+    console.log(err);
+    if(err.code){
+      console.log("");
+      console.log("Another biojs-sniper is running. Terminate it or use -p to run on another port");
+    }else{
+      console.log(err);
+    }
   });
 
   this.server.listen(this.port);

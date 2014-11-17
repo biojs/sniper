@@ -1,37 +1,38 @@
 {
-	"name": "biojs-sniper",
-	"version": "0.0.7",
-	"description": "Renders snippets on demand",
-	"main": "index.js",
-	"bin" : { 
-		"biojs-sniper" : "./bin/sniper" 
-	},
-	"scripts": {
-		"test": "mocha"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/biojs/biojs-sniper"
-	},
-	"keywords": [
-		"biojs",
-		"sniper",
-		"templates"
-	],
-	"author": "greenify",
-	"license": "Apache 2",
-	"bugs": {
-		"url": "https://github.com/biojs/biojs-sniper/issues"
-	},
-	"homepage": "https://github.com/biojs/biojs-sniper",
-	"dependencies": {
-		"commander": "^2.3.0",
-		"concat-stream": "^1.4.6",
-		"deepcopy": "^0.3.3",
-		"director": "^1.2.3",
-		"ecstatic": "^0.5.4",
-		"swig": "^1.4.2",
-		"toml": "^2.0.6",
-		"union": "^0.4.2"
-	}
+  "name": "biojs-sniper",
+  "version": "0.0.8",
+  "description": "Renders snippets on demand",
+  "main": "index.js",
+  "bin": {
+    "biojs-sniper": "./bin/sniper"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biojs/biojs-sniper"
+  },
+  "keywords": [
+    "biojs",
+    "sniper",
+    "templates"
+  ],
+  "author": "greenify",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/biojs/biojs-sniper/issues"
+  },
+  "homepage": "https://github.com/biojs/biojs-sniper",
+  "dependencies": {
+    "commander": "^2.3.0",
+    "concat-stream": "^1.4.6",
+    "deepcopy": "^0.3.3",
+    "director": "^1.2.3",
+    "ecstatic": "^0.5.4",
+    "serve-favicon": "^2.1.6",
+    "swig": "^1.4.2",
+    "toml": "^2.0.6",
+    "union": "^0.4.2"
+  }
 }

@@ -8,34 +8,32 @@ var basename = path.basename;
 var cwd = process.cwd();
 var Server = require("../index.js");
 
-/*
 program
   .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
-  .usage('[debug] [options] [files]')
-  .option('-r, --require <name>', 'require the given module')
+  .usage('[options] [files]')
+  .option('-p, --port <number>', 'port to run', 9090)
   .parse(process.argv);
 
-program.on('reporters', function(){
-	console.log("hi");
-});
-*/
 
 // default settings
 var options = {
-	dirname: ".",
 	config: "package.json",
 	templateDir: "templates",
-	snippets: "snippets"
+	snippets: "snippets",
 }
 
-if(process.argv.length == 2){
+// PARSE cli
+
+if(program.args.length == 0){
 	options.dirname = cwd;
 } else {
-	// first argument
-	options.dirname = process.argv[2];	
+	options.dirname = program.args[0];	
 }
 
+options.port = program.port;
 options.dirname = path.normalize(options.dirname);
+
+console.log("running: http://localhost:" + options.port);
 console.log("DIR:" + options.dirname);
 
 var server = Server(options);

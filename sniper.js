@@ -1,4 +1,3 @@
-var toml = require('toml');
 var fs = require('fs');
 var path = require('path');
 var join = path.join;

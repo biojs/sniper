@@ -50,7 +50,12 @@ var Server = module.exports = function(opts){
 
   var errorHandler = function (err, req, res) {
     res.statusCode = err.status;
-    res.end(req.headers);
+    if(err.status = 404){
+      console.log("404: ", req.url);
+    }else{
+      console.log(err);
+    }
+    res.end();
   };
 
   var options = {

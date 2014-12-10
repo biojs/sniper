@@ -34,7 +34,8 @@ var Server = module.exports = function(opts){
       console.log('Invalid package.json');
       return;
     }
-    this.snippetFolder = join(dirname,opts.snippets);
+    this.snippetFolderName = parsed.snippets[0];
+    this.snippetFolder = join(dirname,this.snippetFolderName);
     console.log("parsed", parsed);
     if(parsed == undefined){
       throw("please define a sniper section in your package.json");
@@ -78,7 +79,7 @@ var Server = module.exports = function(opts){
   this.server = union.createServer(options);
   
   // detail view
-  router.get("/snippets/:name", function (name) {
+  router.get("/"+ this.snippetFolderName + "/:name", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     try{
       var parsed = readConfig();
@@ -92,14 +93,15 @@ var Server = module.exports = function(opts){
   });
 
   // overview listing
-  router.get(/snippets(\/)?/, function (name) {
+  router.get(new RegExp(this.snippetFolderName + "(\/)?"), function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var template = swig.compileFile(listTemplate);
-    this.res.end(template({snips: sniper.getSnippets(), baseHref: "snippets"}));
+    var snippetFolder = self.snippetFolderName;
+    this.res.end(template({snips: sniper.getSnippets(), baseHref: snippetFolder}));
   });
 
   // display all snippets in one page
-  router.get("/snippets/all", function (name) {
+  router.get("/" + this.snippetFolderName + "/all", function (name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html' });
     var snips = sniper.getSnippets();
     var snipStr = [];
@@ -109,14 +111,15 @@ var Server = module.exports = function(opts){
       this.res.status(400).send('Invalid package.json');
       return;
     }
+    var snippetFolder = self.snippetFolderName;
     snips.forEach(function(snip){
       snipStr.push({ content: sniper.buildSnippet(snip,parsed),
         name: snip,
-        baseHref: "snippets"});
+        baseHref: snippetFolder});
     });
     this.res.write(sniper.renderHead(snipTemplate,parsed));
     var template = swig.compileFile(allTemplate);
-    this.res.end(template({snips: snipStr, baseHref: "snippets"}));
+    this.res.end(template({snips: snipStr, baseHref: snippetFolder}));
   });
 
   this.server.on("error",function(err){

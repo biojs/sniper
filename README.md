@@ -20,7 +20,7 @@ biojs-sniper
 npm install -g biojs-sniper
 ```
 
-CLI Server for Snippets.
+CLI Server for Snippets (Visualization examples).
 
 How to use
 ----------
@@ -31,16 +31,15 @@ How to use
   "sniper": {
     "js": ["/build/msa.js"],
     "css": ["/css/msa.css"],
-    "snippets": ["snippets"],
     "first": "msa_show_menu"
   }
 
 ```
 
 `js`: (array) all js dependencies
-`css`: all css files you need
-`snippets`: all snippet folders
-`first`: the snippet to be displayed as first example on the BioJS registry
+`css`: all css files you need (optional)
+`snippets`: (optional) all snippet folders (default: ["snippets"])
+`first`: name of the snippet to be displayed as first example on the BioJS registry
 `buildCSS`: (optional array) alternative CSS file to be used for the BioJS registry if you compile your SASS/LESS.
 
 
@@ -49,11 +48,13 @@ How to use
 Create `js` files in the `snippets` folder.
 
 ```
-var msa = new biojs.vis.msa.msa(yourDiv);
+var app = require("your-awesome-component");
+var instance = new app(yourDiv);
 ```
 
-You can safely assume that `yourDiv` is your main div. Use `yourDiv.id` if your component expects an id.
-If you dislike the wrapping, create your own `<same-filename>.html` file.
+You can safely assume that the variable `yourDiv` is your main div. Use `yourDiv.id` if your component expects an id.
+If you dislike this handy wrapping, you can create your own `<same-filename>.html` file.
+(In case there is no `<same-filename>.html` the sniper will automatically generate one with a div and a randomId - you have access to this div as DOM reference via `yourDiv`).
 
 ### 3. Run the server
 
@@ -86,18 +87,18 @@ The files are refreshed on every reload.
 ... just create the ```same_filename.json`.
 
 ```
-{js: ["/node_modules/biojs-model/biojs.model.min.js"]}
+{js: ["<more js dependencies>"]}
 ```
 
 FAQ?
 -----
 
-#### How can I request relative data?
+#### How can I request relative data? (e.g. for JSBin)
 
 If you want to download data via XHR you might normally write `data/data.json` - make it __relative__ by appending `./`.
 So you would have `./data/data.json`
 
-#### How can I transmit my events to the registry
+#### How can I transmit my events to the registry?
 
 add this line somewhere after you created your application instance in the snippet.
 E.g. if you make an XHR request it has to be in the callback.
@@ -107,7 +108,6 @@ E.g. if you make an XHR request it has to be in the callback.
 ```
 
 (this is - under the hood - replaced with `instance.onAll` and then sends messages to the parent frame).
-
 
 How does it work?
 ----------

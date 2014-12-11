@@ -36,11 +36,11 @@ How to use
 
 ```
 
-`js`: (array) all js dependencies
-`css`: all css files you need (optional)
-`snippets`: (optional) all snippet folders (default: ["snippets"])
-`first`: name of the snippet to be displayed as first example on the BioJS registry
-`buildCSS`: (optional array) alternative CSS file to be used for the BioJS registry if you compile your SASS/LESS.
+`js`: (array) all js dependencies  
+`css`: all css files you need (optional)  
+`snippets`: (optional) all snippet folders (default: ["snippets"])  
+`first`: name of the snippet to be displayed as first example on the BioJS registry  
+`buildCSS`: (optional array) alternative CSS file to be used for the BioJS registry if you compile your SASS/LESS.  
 
 
 ### 2. Create snippets

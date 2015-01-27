@@ -34,7 +34,11 @@ var Server = module.exports = function(opts){
       console.log('Invalid package.json');
       return;
     }
-    this.snippetFolderName = parsed.snippets[0];
+    if(parsed.snippets){
+      this.snippetFolderName = parsed.snippets[0];
+    }else{
+      this.snippetFolderName = "examples";
+    }
     this.snippetFolder = join(dirname,this.snippetFolderName);
     console.log("parsed", parsed);
     if(parsed == undefined){

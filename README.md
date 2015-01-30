@@ -36,7 +36,7 @@ How to use
 
 ```
 
-`js`: (array) all js dependencies  
+`js`: (array) all js dependencies  (paths starting with `/build` will be ignored at the BioJS registry)
 `css`: all css files you need (optional)  
 `snippets`: (optional) all snippet folders (default: ["snippets"])  
 `first`: name of the snippet to be displayed as first example on the BioJS registry  

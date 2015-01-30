@@ -122,4 +122,4 @@ An example can be found at [biojs-vis-msa](https://github.com/greenify/biojs-vis
 Why snippets?
 ---------------------------
 
-Reason: visually appealing example files in the [registry](http://registry.biojs.net/client/#/detail/biojs-vis-msa) (inspired by [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) )
+Reason: visually appealing example files in the [registry](http://biojs.io/d/biojs-vis-msa) (inspired by [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) )

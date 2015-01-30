@@ -104,7 +104,7 @@ add this line somewhere after you created your application instance in the snipp
 E.g. if you make an XHR request it has to be in the callback.
 
 ```
-//instance=<variable name of your component>
+//@biojs-instance=<variable name of your component>
 ```
 
 (this is - under the hood - replaced with `instance.onAll` and then sends messages to the parent frame).

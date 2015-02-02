@@ -10,8 +10,8 @@ program
   .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
   .usage('[options] [files]')
   .option('-p, --port <number>', 'port to run', 9090)
+  .option('-v, --verbose', 'Increase verbosity', false)
   .parse(process.argv);
-
 
 // default settings
 var options = {
@@ -30,6 +30,7 @@ if(program.args.length === 0){
 
 options.port = program.port;
 options.dirname = path.normalize(options.dirname);
+options.verbose = program.verbose;
 
 console.log("running: http://localhost:" + options.port);
 console.log("DIR:" + options.dirname);

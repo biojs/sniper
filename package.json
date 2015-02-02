@@ -30,6 +30,7 @@
     "bluebird": "^2.9.5",
     "commander": "^2.3.0",
     "concat-stream": "^1.4.6",
+    "deepcopy": "^0.4.0",
     "director": "^1.2.3",
     "ecstatic": "^0.5.4",
     "serve-favicon": "^2.1.6",

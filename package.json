@@ -27,6 +27,7 @@
   "homepage": "https://github.com/biojs/biojs-sniper",
   "dependencies": {
     "biojs-util-snippets": "0.0.5",
+    "bluebird": "^2.9.5",
     "commander": "^2.3.0",
     "concat-stream": "^1.4.6",
     "director": "^1.2.3",

@@ -46,7 +46,7 @@ More attributes:
 * `buildCSS` (will replace `css`)
 * `buildJS` (will replace `js`)
 
-The `build` attributes can be used to specify alternative locations - in any the registry will ignore js resources starting with `build`.
+The `build` attributes can be used to specify alternative locations - in any case the registry will ignore js resources starting with `build`.
 
 
 ### 2. Create snippets

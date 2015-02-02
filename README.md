@@ -36,11 +36,17 @@ How to use
 
 ```
 
-`js`: (array) all js dependencies  (paths starting with `/build` will be ignored at the BioJS registry)
+`js`: (array) all js dependencies  (paths starting with `/build` will be ignored at the BioJS registry) (required)
+`first`: name of the snippet to be displayed as first example on the BioJS registry   (required)
 `css`: all css files you need (optional)  
-`snippets`: (optional) all snippet folders (default: ["examples"])  
-`first`: name of the snippet to be displayed as first example on the BioJS registry  
-`buildCSS`: (optional array) alternative CSS file to be used for the BioJS registry if you compile your SASS/LESS.  
+`snippets`: (optional) all snippet folders (default: ["snippets"])  
+
+More attributes:
+
+* `buildCSS` (will replace `css`)
+* `buildJS` (will replace `js`)
+
+The `build` attributes can be used to specify alternative locations - in any the registry will ignore js resources starting with `build`.
 
 
 ### 2. Create snippets

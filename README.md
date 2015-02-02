@@ -38,14 +38,14 @@ How to use
 
 `js`: (array) all js dependencies  (paths starting with `/build` will be ignored at the BioJS registry)
 `css`: all css files you need (optional)  
-`snippets`: (optional) all snippet folders (default: ["snippets"])  
+`snippets`: (optional) all snippet folders (default: ["examples"])  
 `first`: name of the snippet to be displayed as first example on the BioJS registry  
 `buildCSS`: (optional array) alternative CSS file to be used for the BioJS registry if you compile your SASS/LESS.  
 
 
 ### 2. Create snippets
 
-Create `js` files in the `snippets` folder.
+Create `js` files in the `examples` folder.
 
 ```
 var app = require("your-awesome-component");
@@ -70,15 +70,22 @@ There are there modes:
 
 1) Overview mode/list
 
-> [localhost:9090/snippets](http://localhost:9090/snippets)
+> [localhost:9090/examples](http://localhost:9090/examples)
 
 2) List all
 
-> [localhost:9090/snippets/all](http://localhost:9090/snippets/all)
+> [localhost:9090/examples/all](http://localhost:9090/examples/all)
 
 3) List one/detail view
 
-> [localhost:9090/snippets/your_snippet](http://localhost:9090/snippets/your_snippet])
+> [localhost:9090/examples/your_snippet](http://localhost:9090/examples/your_snippet])
+
+4) Emulate the BioJS registry
+
+> [localhost:9090/emu-examples/your_snippet](http://localhost:9090/emu-examples/your_snippet])
+
+(will use the published npm source)
+
 
 The files are refreshed on every reload.
 

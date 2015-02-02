@@ -1,6 +1,6 @@
 {
   "name": "biojs-sniper",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Renders snippets on demand",
   "main": "lib/index.js",
   "bin": {
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/biojs/biojs-sniper",
   "dependencies": {
+    "biojs-util-snippets": "0.0.2",
     "commander": "^2.3.0",
     "concat-stream": "^1.4.6",
     "director": "^1.2.3",

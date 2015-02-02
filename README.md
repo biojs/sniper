@@ -14,7 +14,7 @@ biojs-sniper
                                                                   \__,"          '======'
 
  ```
-
+[![NPM version][npm-image]][npm-url]
 
 ```
 npm install -g biojs-sniper
@@ -46,7 +46,7 @@ More attributes:
 * `buildCSS` (will replace `css`)
 * `buildJS` (will replace `js`)
 
-The `build` attributes can be used to specify alternative locations - in any the registry will ignore js resources starting with `build`.
+The `build` attributes can be used to specify alternative locations - in any case the registry will ignore js resources starting with `build`.
 
 
 ### 2. Create snippets
@@ -136,3 +136,6 @@ Why snippets?
 ---------------------------
 
 Reason: visually appealing example files in the [registry](http://biojs.io/d/biojs-vis-msa) (inspired by [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) )
+
+[npm-url]: https://npmjs.org/package/biojs-sniper
+[npm-image]: https://badge.fury.io/js/biojs-sniper.svg

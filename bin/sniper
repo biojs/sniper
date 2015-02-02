@@ -3,10 +3,8 @@
 var program = require('commander');
 var path = require('path');
 var fs = require('fs');
-var join = path.join;
-var basename = path.basename;
 var cwd = process.cwd();
-var Server = require("../index.js");
+var Server = require("..");
 
 program
   .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
@@ -20,11 +18,11 @@ var options = {
 	config: "package.json",
 	templateDir: "templates",
 	snippets: "snippets",
-}
+};
 
 // PARSE cli
 
-if(program.args.length == 0){
+if(program.args.length === 0){
 	options.dirname = cwd;
 } else {
 	options.dirname = program.args[0];	
@@ -36,4 +34,4 @@ options.dirname = path.normalize(options.dirname);
 console.log("running: http://localhost:" + options.port);
 console.log("DIR:" + options.dirname);
 
-var server = Server(options);
+var server = new Server(options);

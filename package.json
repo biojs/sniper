@@ -2,7 +2,7 @@
   "name": "biojs-sniper",
   "version": "0.1.3",
   "description": "Renders snippets on demand",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "biojs-sniper": "./bin/sniper",
     "sniper": "./bin/sniper"
@@ -28,7 +28,6 @@
   "dependencies": {
     "commander": "^2.3.0",
     "concat-stream": "^1.4.6",
-    "deepcopy": "^0.3.3",
     "director": "^1.2.3",
     "ecstatic": "^0.5.4",
     "serve-favicon": "^2.1.6",

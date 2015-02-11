@@ -1,6 +1,6 @@
 {
   "name": "biojs-sniper",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "description": "Renders snippets on demand",
   "main": "lib/index.js",
   "bin": {

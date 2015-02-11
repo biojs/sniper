@@ -10,11 +10,14 @@ var Minilog = require('minilog');
 var Server = require("..");
 var staticProg = require("../lib/static.js");
 
+var config = join(__dirname, '../package.json');
+
 program
-  .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
-  .usage('[options] [files]')
+  .version(config.version)
+  .description("a" + config.description)
+  .usage('[options] [pkgdir]')
   .option('-p, --port <number>', 'port to run', 9090)
-  .option('-c, --compile', 'Creates static output', false)
+  .option('-c, --compile [directory]', 'Creates static output', false)
   .option('-v, --verbose', 'Increase verbosity', false)
   .parse(process.argv);
 
@@ -53,6 +56,11 @@ if (program.verbose) {
 
 if (program.compile) {
   console.log("WARNING: static compilation mode is in alpha - use with caution");
+
+  if(program.compile !== true){
+    options.outputDir = program.compile; 
+  }
+
   staticProg(options).then(function(){
     console.log("=)");
   }).error(function(){

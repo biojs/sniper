@@ -95,12 +95,37 @@ There are there modes:
 
 The files are refreshed on every reload.
 
-### 4. If you need to add extra js-Files (or css) for a snippet
+### 4. I don't want to run the sniper tool
+
+use:
+
+```
+biojs-sniper -c 
+```
+
+This will compile all the snippets to a minimal HTML version, remember that only
+the example snippets will be uploaded to the registry.
+
+### 5. If you need to add extra js-Files (or css) for a snippet
 
 ... just create the ```same_filename.json`.
 
 ```
 {js: ["<more js dependencies>"]}
+```
+
+### 6. What other CLI options are available?
+
+```
+  Usage: sniper [options] [pkgdir]
+
+  Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -p, --port <number>        port to run
+    -c, --compile [directory]  Creates static output
+    -v, --verbose              Increase verbosity
 ```
 
 FAQ?

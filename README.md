@@ -1,4 +1,4 @@
-biojs-sniper
+sniper
 -------------
 
 ```
@@ -17,7 +17,7 @@ biojs-sniper
 [![NPM version][npm-image]][npm-url]
 
 ```
-npm install -g biojs-sniper
+npm install -g sniper
 ```
 
 CLI Server for Snippets (Visualization examples).
@@ -65,7 +65,7 @@ If you dislike this handy wrapping, you can create your own `<same-filename>.htm
 ### 3. Run the server
 
 ```
-biojs-sniper <your-dir>
+sniper <your-dir>
 ```
 
 If <your-dir> is `.`, you don't need to have this argument.
@@ -100,7 +100,7 @@ The files are refreshed on every reload.
 use:
 
 ```
-biojs-sniper -c 
+sniper -c 
 ```
 
 This will compile all the snippets to a minimal HTML version, remember that only
@@ -162,5 +162,5 @@ Why snippets?
 
 Reason: visually appealing example files in the [registry](http://biojs.io/d/biojs-vis-msa) (inspired by [Angular JS](https://docs.angularjs.org/api/ng/directive/ngClick) )
 
-[npm-url]: https://npmjs.org/package/biojs-sniper
-[npm-image]: https://badge.fury.io/js/biojs-sniper.svg
+[npm-url]: https://npmjs.org/package/sniper
+[npm-image]: https://badge.fury.io/js/sniper.svg

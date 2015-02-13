@@ -1,10 +1,9 @@
 {
-  "name": "biojs-sniper",
-  "version": "0.2.7",
+  "name": "sniper",
+  "version": "0.2.8",
   "description": "Renders snippets on demand",
   "main": "lib/index.js",
   "bin": {
-    "biojs-sniper": "./bin/sniper",
     "sniper": "./bin/sniper"
   },
   "scripts": {
@@ -12,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/biojs/biojs-sniper"
+    "url": "https://github.com/biojs/sniper"
   },
   "keywords": [
     "biojs",
     "sniper",
     "templates"
   ],
-  "author": "greenify",
+  "author": "greenify <greeenify@gmail.com>",
   "license": "Apache 2",
   "bugs": {
-    "url": "https://github.com/biojs/biojs-sniper/issues"
+    "url": "https://github.com/biojs/sniper/issues"
   },
-  "homepage": "https://github.com/biojs/biojs-sniper",
+  "homepage": "https://github.com/biojs/sniper",
   "dependencies": {
     "biojs-util-snippets": "0.1.12",
     "bluebird": "^2.9.5",

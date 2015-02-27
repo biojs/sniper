@@ -1,6 +1,6 @@
 {
   "name": "sniper",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "Renders snippets on demand",
   "main": "lib/index.js",
   "bin": {

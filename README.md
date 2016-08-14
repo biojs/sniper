@@ -111,7 +111,7 @@ the example snippets will be uploaded to the registry.
 ... just create the ```same_filename.json`.
 
 ```
-{js: ["<more js dependencies>"]}
+{"js": ["<more js dependencies>"]}
 ```
 
 ### 6. What other CLI options are available?

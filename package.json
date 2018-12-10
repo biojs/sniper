@@ -31,7 +31,7 @@
     "concat-stream": "^1.4.6",
     "deepcopy": "^0.4.0",
     "director": "^1.2.3",
-    "ecstatic": "^0.5.4",
+    "ecstatic": "^3.3.0",
     "minilog": "^2.0.6",
     "serve-favicon": "^2.1.6",
     "swig": "^1.4.2",
